@@ -1,9 +1,14 @@
 //
 
+import 'dart:collection';
+
 void main() {
-  List<int> _numbers = List.generate(10, (i) => i);
-  for (int i = _numbers.length - 1; -1 < i; i--) {
-    print(i);
-    print(_numbers[i]);
-  }
+  List<int> numbers = UnmodifiableListView(<int>[0, 1, 2, 3, 4, 5]);
+  // numbers[2] = 20;
+  print(numbers.hashCode);
+  numbers = List.from(numbers)
+    ..removeAt(2)
+    ..insert(2, 20);
+  print(numbers.hashCode);
+  // print(numbers);
 }
