@@ -1,14 +1,27 @@
 //
 
-import 'dart:collection';
-
 void main() {
-  List<int> numbers = UnmodifiableListView(<int>[0, 1, 2, 3, 4, 5]);
-  // numbers[2] = 20;
-  print(numbers.hashCode);
-  numbers = List.from(numbers)
-    ..removeAt(2)
-    ..insert(2, 20);
-  print(numbers.hashCode);
-  // print(numbers);
+  final G70 g70 = G70("G70");
+  final G80 g80 = G80("G80");
+  g70.printName();
+  g80.printName();
+}
+
+class Car {
+  final String name;
+
+  const Car(this.name);
+
+  void printName() => print("자동차 이름은 $name 입니다");
+}
+
+class G80 extends Car {
+  const G80(super.name);
+}
+
+class G70 extends Car {
+  const G70(super.name);
+
+  // @override
+  void printName() => print("$name 입니다");
 }
