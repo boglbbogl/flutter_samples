@@ -9,14 +9,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  awesome_indicator:
-    dependency: "direct main"
-    description:
-      name: awesome_indicator
-      sha256: "0be6cfd135b25985f6ae8a64838a9b4e8b9f3b3c9d7c8fbc021aec146a9a3591"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.5"
   boolean_selector:
     dependency: transitive
     description:
@@ -194,4 +186,3 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.3 <4.0.0"
-  flutter: ">=1.17.0"
