@@ -1,15 +1,18 @@
 //
 
-// void main() {
-//   Test test = Test();
-//   test.hit();
-// }
+void main() {}
 
-abstract class Person {
-  void printName(String name);
+class Hero {
+  final int tier;
+  const Hero({required this.tier});
+
+  int getPower() => (10 - tier) * 100;
 }
 
-class Tyger extends Person {
-  @override
-  void printName(String name) => print("이름은 Tyger !");
+class IronMan extends Hero {
+  const IronMan({super.tier = 9});
+}
+
+class Hulk extends Hero {
+  const Hulk({super.tier = 7});
 }
