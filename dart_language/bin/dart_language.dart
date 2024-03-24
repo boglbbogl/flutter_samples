@@ -2,22 +2,20 @@
 
 void main() {
   C c = C();
-  c.log();
+  print(c.name);
+  // C c = C("tyger");
+  // print(c.name);
 }
-
-// class AClass
 
 mixin A {
-  void log() => print("A mixin");
-}
-mixin B {
-  void log() => print("B mixin");
-}
-mixin D {
-  void log() => print("D mixin");
+  final String name = "A";
 }
 
-class C with A, B, D {}
+mixin B {
+  final String name = "B";
+}
+
+class C with A, B {}
 
 
 // void main() {
