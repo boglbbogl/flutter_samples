@@ -1,80 +1,88 @@
 //
 
 void main() {
-  C c = C();
-  print(c.name);
-  // C c = C("tyger");
-  // print(c.name);
+  IronMan ironMan = IronMan();
 }
 
-mixin A {
-  final String name = "A";
+abstract class Hero {
+  final String name;
+  const Hero(this.name);
 }
 
-mixin B {
-  final String name = "B";
+mixin Fly on Hero {
+  void fly() => print("${super.name} Fly !");
 }
 
-class C with A, B {}
+mixin Punch on Hero {
+  void punch() => print("${super.name} Punch !");
+}
 
+mixin Kick on Hero {
+  void kick() => print("${super.name} Kick !");
+}
 
-// void main() {
-//   IronMan ironMan = IronMan();
-//   SuperMan superMan = SuperMan();
-//   print(
-//       "${ironMan.name}의 공격력은 ${ironMan.getAttack()}, 방어력은 ${ironMan.getDefence()}이다.");
-//   print(
-//       "${superMan.name}의 공격력은 ${superMan.getAttack()}, 방어력은 ${superMan.getDefence()}이다.");
-// }
+mixin Beam on Hero {
+  void beam() => print("${super.name} Laser Beam !");
+}
+
+class IronMan extends Hero with Fly, Punch, Kick, Beam {
+  IronMan() : super("IronMan");
+}
+
+class BatMan extends Hero with Punch, Kick {
+  const BatMan() : super("BatMan");
+}
+
+class SuperMan extends Hero with Fly, Punch, Kick, Beam {
+  SuperMan() : super("SuperMan");
+}
 
 // abstract class Hero {
-//   final String name;
-//   const Hero(this.name);
-
-//   int getAttack();
-//   int getDefence();
+//   late final String name;
+//   void getAttack();
+//   void getDefence();
 // }
 
-// class IronMan implements Hero {
+// mixin Mavel on Hero {
 //   final int tier = 9;
 //   @override
-//   int getAttack() => (10 - tier) * 100;
+//   void getAttack() => print("Mavel $name 공격력 : ${(10 - tier) * 100}");
 
 //   @override
-//   int getDefence() => (10 - tier) * 20;
-
-//   @override
-//   String get name => "IronMan";
+//   void getDefence() => print("Mavel $name 방어력 : ${(10 - tier) * 20}");
 // }
 
-// class Hulk implements Hero {
-//   final int tier = 7;
+// mixin DC on Hero {
+//   int get attack;
+//   int get defence;
 //   @override
-//   int getAttack() => (10 - tier) * 100;
+//   void getAttack() => print("DC $name 공격력 : $attack");
 
 //   @override
-//   int getDefence() => (10 - tier) * 20;
-
-//   @override
-//   String get name => "Hulk";
+//   void getDefence() => print("DC $name 방어력 : $defence");
 // }
 
-// class SuperMan implements Hero {
-//   @override
-//   int getAttack() => 1000;
-
-//   @override
-//   int getDefence() => 100;
-
-//   @override
-//   String get name => "SuperMan";
+// mixin Actor {
+//   late final String actor;
+//   void getActor() => print("배우 : $actor");
 // }
 
-// // class Hulk extends Hero {
-// //   final String name = "Hulk";
-// //   const Hulk({super.tier = 7, super.name = "Hulk"});
-// // }
+// class IronMan extends Hero with Mavel, Actor {
+//   IronMan() {
+//     super.name = "IronMan";
+//     super.actor = "Robert Downey Jr.";
+//   }
+// }
 
-// // class SuperMan extends Hero {
-// //   const SuperMan({required super.tier});
-// // }
+// class BatMan extends Hero with DC, Actor {
+//   BatMan() {
+//     super.name = "SuperMan";
+//     super.actor = "Christian Bale";
+//   }
+
+//   @override
+//   int get attack => 1000;
+
+//   @override
+//   int get defence => 300;
+// }
