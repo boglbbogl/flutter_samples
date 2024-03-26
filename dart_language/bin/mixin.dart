@@ -1,28 +1,33 @@
-abstract class Vehicle {}
+abstract class ElectricCar {}
 
-mixin Car {}
+abstract class EngineCar {}
 
-mixin Airplain {}
+abstract class HybridCar {}
 
-mixin Motorcycle {}
+mixin Electric {}
 
-mixin Ship {}
+mixin Engine {}
 
-mixin Forward {}
+mixin Fuel on Engine {}
 
-mixin Backward {}
+mixin Gasoline on Engine, Fuel {}
 
-mixin onRoad {}
+mixin Diesel on Engine, Fuel {}
 
-mixin onWater on Ship {}
+mixin Battery on Electric {}
 
-mixin onAir on Airplain {}
+mixin Charger on Electric, Battery {}
 
-class Porshe911 extends Vehicle with Car, Forward, Backward {}
+mixin DPF on Engine, Fuel, Diesel {}
 
-class A380 extends Vehicle with Airplain, Forward {}
+class Boxter extends EngineCar with Engine, Fuel, Gasoline {}
 
-class R1 extends Vehicle with Motorcycle, Forward {}
+class Taycan extends ElectricCar with Electric, Battery, Charger {}
+
+class Cayenne extends EngineCar with Engine, Fuel, Diesel, DPF {}
+
+class PanameraHybrid extends HybridCar
+    with Engine, Electric, Fuel, Gasoline, Battery, Charger {}
 
 // abstract class Hero {
 //   final String name;
