@@ -1,35 +1,61 @@
-abstract class Hero {
-  final String name;
-  const Hero(this.name);
-}
+abstract class Vehicle {}
 
-mixin Fly on Hero {
-  void fly() => print("${super.name} Fly !");
-}
+mixin Car {}
 
-mixin Punch on Hero {
-  void punch() => print("${super.name} Punch !");
-}
+mixin Airplain {}
 
-mixin Kick on Hero {
-  void kick() => print("${super.name} Kick !");
-}
+mixin Motorcycle {}
 
-mixin Bim on Hero {
-  void beam() => print("${super.name} Laser Bim !");
-}
+mixin Ship {}
 
-class IronMan extends Hero with Fly, Punch, Kick, Bim {
-  IronMan() : super("IronMan");
-}
+mixin Forward {}
 
-class BatMan extends Hero with Punch, Kick {
-  const BatMan() : super("BatMan");
-}
+mixin Backward {}
 
-class SuperMan extends Hero with Fly, Punch, Kick, Bim {
-  SuperMan() : super("SuperMan");
-}
+mixin onRoad {}
+
+mixin onWater on Ship {}
+
+mixin onAir on Airplain {}
+
+class Porshe911 extends Vehicle with Car, Forward, Backward {}
+
+class A380 extends Vehicle with Airplain, Forward {}
+
+class R1 extends Vehicle with Motorcycle, Forward {}
+
+// abstract class Hero {
+//   final String name;
+//   const Hero(this.name);
+// }
+
+// mixin Fly on Hero {
+//   void fly() => print("${super.name} Fly !");
+// }
+
+// mixin Punch on Hero {
+//   void punch() => print("${super.name} Punch !");
+// }
+
+// mixin Kick on Hero {
+//   void kick() => print("${super.name} Kick !");
+// }
+
+// mixin Bim on Hero {
+//   void beam() => print("${super.name} Laser Bim !");
+// }
+
+// class IronMan extends Hero with Fly, Punch, Kick, Bim {
+//   IronMan() : super("IronMan");
+// }
+
+// class BatMan extends Hero with Punch, Kick {
+//   const BatMan() : super("BatMan");
+// }
+
+// class SuperMan extends Hero with Fly, Punch, Kick, Bim {
+//   SuperMan() : super("SuperMan");
+// }
 
 abstract class Phone {
   String get name;
