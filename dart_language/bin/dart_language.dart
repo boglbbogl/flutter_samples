@@ -2,12 +2,29 @@
 
 void main() {}
 
-abstract class Car {}
+abstract class PC {}
 
-mixin G80 on G70 {}
-mixin G70 on Car {}
+abstract class Phone {}
 
-class Test extends Car with G70, G80 {}
+mixin Camera on Phone {
+  void shoot() => print("사진 촬영 !");
+}
+
+mixin Photo {
+  void openPhotos() => print("사진첩 오픈 !");
+}
+
+mixin Lock {
+  void unLock() => print("잠금해제 !");
+}
+
+class Mac extends PC with Photo, Lock {}
+
+class IPhone extends Phone with Camera, Photo, Lock {}
+
+
+
+
 
 // abstract class Hero {
 //   final String name;
