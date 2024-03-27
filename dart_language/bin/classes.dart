@@ -20,3 +20,30 @@ abstract class Car {
   void getTorque();
   void getCurbWeight();
 }
+
+class Platform {
+  final int id;
+  final String? code;
+  final String name;
+  final String os;
+  final String createdAt;
+  final String? updatedAt;
+
+  const Platform({
+    required this.id,
+    required this.code,
+    required this.name,
+    required this.os,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory Platform.empty() => Platform(
+        id: 0,
+        code: null,
+        name: "",
+        os: "",
+        createdAt: "",
+        updatedAt: null,
+      );
+}

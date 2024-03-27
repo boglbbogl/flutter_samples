@@ -29,38 +29,38 @@ class Cayenne extends EngineCar with Engine, Fuel, Diesel, DPF {}
 class PanameraHybrid extends HybridCar
     with Engine, Electric, Fuel, Gasoline, Battery, Charger {}
 
-// abstract class Hero {
-//   final String name;
-//   const Hero(this.name);
-// }
+abstract class Hero {
+  final String name;
+  const Hero(this.name);
+}
 
-// mixin Fly on Hero {
-//   void fly() => print("${super.name} Fly !");
-// }
+mixin Fly on Hero {
+  void fly() => print("${super.name} Fly !");
+}
 
-// mixin Punch on Hero {
-//   void punch() => print("${super.name} Punch !");
-// }
+mixin Punch on Hero {
+  void punch() => print("${super.name} Punch !");
+}
 
-// mixin Kick on Hero {
-//   void kick() => print("${super.name} Kick !");
-// }
+mixin Kick on Hero {
+  void kick() => print("${super.name} Kick !");
+}
 
-// mixin Bim on Hero {
-//   void beam() => print("${super.name} Laser Bim !");
-// }
+mixin Bim on Hero {
+  void beam() => print("${super.name} Laser Bim !");
+}
 
-// class IronMan extends Hero with Fly, Punch, Kick, Bim {
-//   IronMan() : super("IronMan");
-// }
+class IronMan extends Hero with Fly, Punch, Kick, Bim {
+  IronMan() : super("IronMan");
+}
 
-// class BatMan extends Hero with Punch, Kick {
-//   const BatMan() : super("BatMan");
-// }
+class BatMan extends Hero with Punch, Kick {
+  const BatMan() : super("BatMan");
+}
 
-// class SuperMan extends Hero with Fly, Punch, Kick, Bim {
-//   SuperMan() : super("SuperMan");
-// }
+class SuperMan extends Hero with Fly, Punch, Kick, Bim {
+  SuperMan() : super("SuperMan");
+}
 
 abstract class Phone {
   String get name;
