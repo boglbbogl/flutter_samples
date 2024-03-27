@@ -1,4 +1,16 @@
-void main() {}
+void main() {
+  Order boxter = Order(
+    orderNo: 1,
+    code: "boxter",
+    name: null,
+    orderAt: DateTime.now(),
+    startAt: null,
+    endAt: null,
+    isPreOrder: true,
+    memos: [],
+  );
+  boxter = boxter.copyWith(orderNo: 3);
+}
 
 class Order {
   final int orderNo;
@@ -20,6 +32,8 @@ class Order {
     required this.isPreOrder,
     required this.memos,
   });
+
+  // OrderCopyWith get copyWith => OrderImplementsCopyWith(this);
 
   Order copyWith({
     final int? orderNo,

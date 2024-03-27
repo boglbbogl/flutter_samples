@@ -46,4 +46,24 @@ class Platform {
         createdAt: "",
         updatedAt: null,
       );
+
+  factory Platform.subClass() => Mac(
+        id: 0,
+        code: null,
+        name: "",
+        os: "",
+        createdAt: "",
+        updatedAt: null,
+      );
+}
+
+class Mac extends Platform {
+  const Mac({
+    required super.id,
+    required super.code,
+    required super.name,
+    required super.os,
+    required super.createdAt,
+    required super.updatedAt,
+  });
 }
