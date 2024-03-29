@@ -1,20 +1,25 @@
-class GeneralPerson {}
+class GenralCount {
+  int count = 0;
+}
 
-class SingletonPerson {
-  static final SingletonPerson instance = SingletonPerson._internal();
-  factory SingletonPerson() => instance;
-  SingletonPerson._internal();
+class SingletonCount {
+  static final SingletonCount instance = SingletonCount._internal();
+  factory SingletonCount() => instance;
+  SingletonCount._internal();
+
+  int count = 0;
 }
 
 void main() {
-  GeneralPerson general1 = GeneralPerson();
-  GeneralPerson general2 = GeneralPerson();
-  print(general1.hashCode);
-  print(general2.hashCode);
-  print(general1 == general2);
-  SingletonPerson singleton1 = SingletonPerson();
-  SingletonPerson singleton2 = SingletonPerson();
-  print(singleton1.hashCode);
-  print(singleton2.hashCode);
-  print(singleton1 == singleton2);
+  // GenralCount count1 = GenralCount();
+  // GenralCount count2 = GenralCount();
+  // count1.count = count1.count + 1;
+  // print(count1.count);
+  // print(count2.count);
+
+  SingletonCount count1 = SingletonCount();
+  SingletonCount count2 = SingletonCount();
+  count1.count = count1.count + 1;
+  print(count1.count);
+  print(count2.count);
 }
