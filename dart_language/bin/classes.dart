@@ -67,15 +67,3 @@ class Mac extends Platform {
     required super.updatedAt,
   });
 }
-
-void main() {}
-
-class Test {
-  void test() {
-    print("test");
-  }
-}
-
-class Test2 extends Test {}
-
-class Test3 extends Test2 {}
