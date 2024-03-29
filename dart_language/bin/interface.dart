@@ -6,9 +6,7 @@ interface class Test {
 
 class Test2 implements Test {
   @override
-  void test() {
-    // TODO: implement test
-  }
+  void test() {}
 }
 
 void main() {}
