@@ -1,11 +1,11 @@
-class GenralCount {
-  int count = 0;
-}
+// class GenralCount {
+//   int count = 0;
+// }
 
 class SingletonCount {
-  static final SingletonCount instance = SingletonCount._internal();
+  static final SingletonCount instance = SingletonCount.test();
   factory SingletonCount() => instance;
-  SingletonCount._internal();
+  SingletonCount.test();
 
   int count = 0;
 }
@@ -22,4 +22,17 @@ void main() {
   count1.count = count1.count + 1;
   print(count1.count);
   print(count2.count);
+  print(count1.hashCode);
+  print(count2.hashCode);
+
+  // Singleton test = Singleton.instance;
+  // Singleton test2 = Singleton.instance;
+  // print(test.hashCode);
+  // print(test2.hashCode);
+}
+
+class Singleton {
+  static final Singleton _instance = Singleton._internal();
+  factory Singleton() => _instance;
+  Singleton._internal();
 }
