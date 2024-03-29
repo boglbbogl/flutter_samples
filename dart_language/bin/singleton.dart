@@ -29,10 +29,12 @@ void main() {
   // Singleton test2 = Singleton.instance;
   // print(test.hashCode);
   // print(test2.hashCode);
+  Singleton singleton = Singleton();
+  Singleton singleton2 = Singleton.instance;
 }
 
 class Singleton {
-  static final Singleton _instance = Singleton._internal();
-  factory Singleton() => _instance;
+  static final Singleton instance = Singleton._internal();
+  factory Singleton() => instance;
   Singleton._internal();
 }
