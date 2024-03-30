@@ -59,7 +59,7 @@ class Order {
 }
 
 abstract class OrderCopyWith {
-  call({
+  Order call({
     final int orderNo,
     final String code,
     final String? name,

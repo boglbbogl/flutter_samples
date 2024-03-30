@@ -3,8 +3,14 @@ class Hero {
   String callTest(String name) => "Test $name !";
 }
 
+class Watch {
+  String call(DateTime date) {
+    return "${date.month.toString().padLeft(2, "0")}월 ${date.day.toString().padLeft(2, "0")}일, ${date.year}년";
+  }
+}
+
 void main() {
-  Hero hero = Hero();
-  String thor = hero("Thor");
-  print(thor);
+  Watch watch = Watch();
+  String message = watch(DateTime(2000, 1, 1));
+  print(message);
 }
