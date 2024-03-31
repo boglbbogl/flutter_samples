@@ -67,3 +67,18 @@ class Mac extends Platform {
     required super.updatedAt,
   });
 }
+
+class Test {
+  final int _test;
+
+  const Test({required int test}) : _test = test;
+}
+
+class Test2 extends Test {
+  const Test2({required super.test});
+}
+
+void main() {
+  Test2 test = Test2(test: 0);
+  print(test._test);
+}
