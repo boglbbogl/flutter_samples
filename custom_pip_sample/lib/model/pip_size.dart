@@ -31,8 +31,8 @@ class PIPSize {
 
   factory PIPSize.pageToFloating(Size size, int duration, PIPSize cache) =>
       PIPSize(
-        top: cache.top,
-        left: cache.left,
+        top: cache.top ?? (size.height - ((size.width * 0.35) * 1.7777)) - 40,
+        left: cache.left ?? (size.width * 0.65) - 20,
         width: size.width * 0.35,
         height: (size.width * 0.35) * 1.7777,
         duration: duration,

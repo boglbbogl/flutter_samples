@@ -110,6 +110,7 @@ class ModeCubit extends Cubit<ModeState> {
         isAnimated: true,
         size: PIPSize.bottomPosition(_deviceSize, _duration),
         mode: ModeType.none,
+        cacheFloating: PIPSize.init(),
       ));
       _endAnimation();
     }
