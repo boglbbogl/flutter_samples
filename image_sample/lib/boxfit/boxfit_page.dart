@@ -55,7 +55,7 @@ class _BoxFitPageState extends State<BoxFitPage> {
               width: widget.size?.width,
               height: widget.size?.height,
               child: Image.network(
-                "https://velog.velcdn.com/images/tygerhwang/post/ca402d77-a553-4846-b2cd-70e36fd2a812/image.jpg",
+                "https://velog.velcdn.com/images/tygerhwang/post/80dd2a88-9792-4915-96df-f2078d3a07bd/image.jpg",
                 fit: widget.type.fit,
               ),
             ),
