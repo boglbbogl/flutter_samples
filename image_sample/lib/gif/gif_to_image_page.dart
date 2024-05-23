@@ -61,15 +61,28 @@ class _GIFToImagePageState extends State<GIFToImagePage> {
                 ...List.generate(
                   images.length,
                   (index) => Container(
-                    height: 130,
+                    height: 250,
                     color: Colors.red,
                     child: Stack(
                       children: [
-                        Image.file(
-                          images[index],
-                          fit: BoxFit.cover,
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: 250,
+                          child: Image.file(
+                            images[index],
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        Text(index.toString())
+                        Center(
+                          child: Text(
+                            (index + 1).toString(),
+                            style: const TextStyle(
+                              fontSize: 60,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black45,
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
