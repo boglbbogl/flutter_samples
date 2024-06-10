@@ -1,20 +1,14 @@
-// import 'package:http/http.dart' as http;
-// import 'package:mockito_sample/constants/constants.dart';
+import 'package:http/http.dart' as http;
+import 'package:mockito_sample/image/image_data.dart';
 
-// class ImageRepository {
-//   final http.Client client;
+class ImageRepository {
+  final http.Client client;
 
-//   const ImageRepository(this.client);
+  const ImageRepository(this.client);
 
-//   Future<void> fetch(int no) async {
-//     try {
-//       http.Response response =
-//           await client.get(Uri.parse(Urls.currentImageByNo(no)));
-//       if (response.statusCode == 200) {
-//         //
-//       } else {
-//         //
-//       }
-//     } catch (_) {}
-//   }
-// }
+  Future<ImageData?> fetch(int no) async {
+    try {} catch (_) {
+      return null;
+    }
+  }
+}
