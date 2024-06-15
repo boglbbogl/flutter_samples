@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tdd_books/domain/entities/book.dart';
@@ -20,11 +21,11 @@ void main() {
 
   test("저장소에서 책 리스트를 가져오는가 ?", () async {
     when(mockBookRepository.getSearchBooks(query))
-        .thenAnswer((_) async => testBooks);
+        .thenAnswer((_) async => const Right(testBooks));
 
-    final Book result = await usecase(query);
+    final result = await usecase(query);
 
-    expect(result, testBooks);
+    expect(result, const Right(testBooks));
 
     verify(mockBookRepository.getSearchBooks(query));
 

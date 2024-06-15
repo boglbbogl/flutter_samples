@@ -1,4 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:tdd_books/core/constants/constant.dart';
+import 'package:http/http.dart' as http;
+import 'package:tdd_books/core/errors/server_exception.dart';
+import 'package:tdd_books/data/models/book_model.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,7 +64,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
+  void _incrementCounter() async {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -67,6 +73,17 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+
+    final response = await http.get(Uri.parse(Constant.bookSearchPath("해리")),
+        headers: Constant.header);
+    if (response.statusCode == 200) {
+      final String responseString = utf8.decode(response.bodyBytes);
+      final Map<String, dynamic> toMap = json.decode(responseString);
+      // return BookModel.fromJson(json.decode(response.body));
+      print(BookModel.fromJson(toMap));
+    } else {
+      throw const ServerException();
+    }
   }
 
   @override

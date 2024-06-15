@@ -13,16 +13,14 @@ abstract class BookRemoteDataSource {
 class BookRemoteDataSourceImpl implements BookRemoteDataSource {
   final http.Client client;
 
-  BookRemoteDataSourceImpl(this.client);
+  const BookRemoteDataSourceImpl(this.client);
+
   @override
   Future<Book> getSearchBooks(String query) async {
     final response = await client.get(Uri.parse(Constant.bookSearchPath(query)),
         headers: Constant.header);
     if (response.statusCode == 200) {
-      final String responseString = utf8.decode(response.bodyBytes);
-      final Map<String, dynamic> toMap = json.decode(responseString);
-      // return BookModel.fromJson(json.decode(response.body));
-      return BookModel.fromJson(toMap);
+      return BookModel.fromJson(json.decode(response.body));
     } else {
       throw const ServerException();
     }
