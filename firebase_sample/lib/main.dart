@@ -74,14 +74,21 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
-    await _firestore.collection("cars").doc("123456789").set(
-      {
-        "brand": "Genesis",
-        "name": "G70",
-        "price": 5000,
-      },
-    );
+    final userquery = _firestore
+        .collection('tbl_tags')
+        // .where('uid', isEqualTo: "11111")
+        // .orderBy('uid', descending: true)
+        // .where('bid', isEqualTo: '11111')
+        // .where('tag_time')
+        .orderBy('tag_time', descending: true)
+        // .limit(1)
+        .get();
+
+    await userquery.then((querySnapshot) {
+      print(querySnapshot.docs);
+    });
   }
 
   @override
