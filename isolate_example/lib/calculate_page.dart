@@ -3,6 +3,13 @@ import 'dart:isolate';
 import 'package:flutter/material.dart';
 import 'package:isolate_example/appbar_widget.dart';
 
+class IsolateMessage {
+  final SendPort sendPort;
+  final int current;
+
+  const IsolateMessage({required this.sendPort, required this.current});
+}
+
 class CalculatePage extends StatefulWidget {
   const CalculatePage({super.key});
 
@@ -14,16 +21,13 @@ class _CalculatePageState extends State<CalculatePage> {
   bool isLoading = false;
   int result = 0;
 
-  void _calculate() {
+  void _normalCalculation() {
     if (!isLoading) {
       setState(() => isLoading = true);
       Future.delayed(const Duration(milliseconds: 1000), () {
-        for (int i = 0; i < 2000; i++) {
-          for (int j = 0; j < 2000; j++) {
-            for (int k = 0; k < 2000; k++) {
-              result++;
-            }
-          }
+        result = 0;
+        while (result < 10000000000) {
+          result++;
         }
         setState(() => isLoading = false);
       });
@@ -32,24 +36,31 @@ class _CalculatePageState extends State<CalculatePage> {
 
   Future<void> _isolateCalculation() async {
     if (!isLoading) {
-      final ReceivePort _receivePort = ReceivePort();
-      await Isolate.spawn(_calculateInIsolate, _receivePort.sendPort);
-      _receivePort.listen((message) {
-        print(message);
+      setState(() => isLoading = true);
+
+      final ReceivePort receivePort = ReceivePort();
+      final IsolateMessage isolateMessage =
+          IsolateMessage(sendPort: receivePort.sendPort, current: result);
+      final Isolate isolate =
+          await Isolate.spawn(_calculateInIsolate, isolateMessage);
+      receivePort.listen((message) {
+        setState(() {
+          result = message;
+          isLoading = false;
+        });
+        receivePort.close();
+        isolate.kill();
       });
     }
   }
 
-  static void _calculateInIsolate(SendPort sendPort) {
-    int result = 0;
-    for (int i = 0; i < 2000; i++) {
-      for (int j = 0; j < 2000; j++) {
-        for (int k = 0; k < 2000; k++) {
-          result++;
-        }
-      }
+  static void _calculateInIsolate(IsolateMessage sendPort) {
+    // int current = message.current;
+    int current = 0;
+    while (current < 10000000000) {
+      current++;
     }
-    sendPort.send(result);
+    sendPort.sendPort.send(current);
   }
 
   @override
@@ -77,7 +88,7 @@ class _CalculatePageState extends State<CalculatePage> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.amber,
-                        fontSize: 20),
+                        fontSize: 22),
                   ),
                 ),
                 Container(
@@ -92,14 +103,14 @@ class _CalculatePageState extends State<CalculatePage> {
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: 18,
                           ),
                         ),
                 ),
               ],
             ),
           ),
-          _button("Nomal Calculation", _calculate),
+          _button("Normal Calculation", _normalCalculation),
           _button("Isolate Calculation", _isolateCalculation),
         ],
       ),
