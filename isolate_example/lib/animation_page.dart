@@ -43,7 +43,7 @@ class _AnimationPageState extends State<AnimationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color.fromRGBO(26, 26, 26, 1),
-        appBar: const AppbarWidget(title: "Calculate"),
+        appBar: const AppbarWidget(title: "Animation"),
         body: Column(
           children: [
             Shimmer.fromColors(
