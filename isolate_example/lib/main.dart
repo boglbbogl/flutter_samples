@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:isolate_example/animation_page.dart';
 import 'package:isolate_example/appbar_widget.dart';
 import 'package:isolate_example/calculate_page.dart';
+import 'package:isolate_example/compute_page.dart';
 import 'package:isolate_example/count_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MaterialApp(
     home: App(),
   ));
@@ -32,6 +34,7 @@ class _AppState extends State<App> {
           _button("Calculate", const CalculatePage()),
           _button("Count", const CountPage()),
           _button("Animation", const AnimationPage()),
+          _button("Compute", const ComputePage()),
         ],
       ),
     );
